@@ -1,7 +1,8 @@
 from Book import Book
 from Member import Member
-from Library import library
+from Library import Library
 from colorama import Fore
+library = Library()
 
 print("--- Welcome To Aguirre's library ---")
 print("How can I help you today?")
@@ -18,7 +19,8 @@ while True:
         print(Fore.RED + "Invalid choice. Please Select 1-4")
     
     if choice == 1:
-        print(Fore.YELLOW + "You chose search by author")
+        user_input = str(input("Type the author's name: "))
+        library.author_search(user_input)
     elif choice == 2:
         print(Fore.YELLOW + "You chose search by title")
     elif choice == 3:

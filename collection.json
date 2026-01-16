@@ -2,84 +2,84 @@
 
   {
     "title": "Red Rising",
-    "author": "Pierce Brown",
+    "author": "pierce brown",
     "genre": "Fantasy",
     "pages": 416,
     "total_copies": 3
   },
   {
     "title": "To Kill a Mockingbird",
-    "author": "Harper Lee",
+    "author": "harper lee",
     "genre": "Classic",
     "pages": 281,
     "total_copies": 5
   },
   {
     "title": "1984",
-    "author": "George Orwell",
+    "author": "george orwell",
     "genre": "Dystopian",
     "pages": 328,
     "total_copies": 4
   },
   {
     "title": "The Great Gatsby",
-    "author": "F. Scott Fitzgerald",
+    "author": "f. scott fitzgerald",
     "genre": "Classic",
     "pages": 180,
     "total_copies": 3
   },
   {
     "title": "The Catcher in the Rye",
-    "author": "J.D. Salinger",
+    "author": "j.d. salinger",
     "genre": "Classic",
     "pages": 214,
     "total_copies": 4
   },
   {
     "title": "Pride and Prejudice",
-    "author": "Jane Austen",
+    "author": "jane austen",
     "genre": "Romance",
     "pages": 279,
     "total_copies": 3
   },
   {
     "title": "The Hobbit",
-    "author": "J.R.R. Tolkien",
+    "author": "j.r.r. tolkien",
     "genre": "Fantasy",
     "pages": 310,
     "total_copies": 5
   },
   {
     "title": "Harry Potter and the Sorcerer's Stone",
-    "author": "J.K. Rowling",
+    "author": "j.k. rowling",
     "genre": "Fantasy",
     "pages": 309,
     "total_copies": 6
   },
   {
     "title": "The Lord of the Rings",
-    "author": "J.R.R. Tolkien",
+    "author": "j.r.r. tolkien",
     "genre": "Fantasy",
     "pages": 1178,
     "total_copies": 2
   },
   {
     "title": "The Da Vinci Code",
-    "author": "Dan Brown",
+    "author": "dan brown",
     "genre": "Mystery",
     "pages": 489,
     "total_copies": 4
   },
   {
     "title": "Angels & Demons",
-    "author": "Dan Brown",
+    "author": "dan brown",
     "genre": "Mystery",
     "pages": 616,
     "total_copies": 3
   },
   {
     "title": "The Hunger Games",
-    "author": "Suzanne Collins",
+    "author": "suzanne collins",
     "genre": "Dystopian",
     "pages": 374,
     "total_copies": 5
