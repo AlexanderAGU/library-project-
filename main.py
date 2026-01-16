@@ -2,6 +2,8 @@ from Book import Book
 from Member import Member
 from Library import Library
 from colorama import Fore
+from colorama import init
+init(autoreset=True)
 library = Library()
 
 print("--- Welcome To Aguirre's library ---")
@@ -14,7 +16,7 @@ while True:
     print("3. See recommendations")
     print("4. Exit")
     try:
-        choice = int(input("Please type 1-4"))
+        choice = int(input("Please type 1-4: "))
     except ValueError:
         print(Fore.RED + "Invalid choice. Please Select 1-4")
     
@@ -22,7 +24,8 @@ while True:
         user_input = str(input("Type the author's name: "))
         library.author_search(user_input)
     elif choice == 2:
-        print(Fore.YELLOW + "You chose search by title")
+       user_input = str(input("type the title of the book: "))
+       library.title_search(user_input)
     elif choice == 3:
         print(Fore.YELLOW + "You chose to see recommendations")
     elif choice == 4:
