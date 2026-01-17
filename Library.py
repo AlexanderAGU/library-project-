@@ -1,4 +1,6 @@
 import json
+import random
+from Member import Member
 from Book import Book
 from colorama import Fore, init
 
@@ -67,6 +69,14 @@ class Library:
             response = input("(y/n): ").strip().lower()
             if response == "y":
                 print(Fore.GREEN + "Book selected.")
+                Member.book_list(matches) 
                 return
 
         print(Fore.RED + "No matching book confirmed. Please try again.")
+
+
+    def recommendations(self):
+        for book in self.books:
+            recommendations = random.randint(book)
+            print(f"{recommendations}")
+

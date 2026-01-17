@@ -1,5 +1,4 @@
-from colorama import Fore
-from colorama import init
+from colorama import Fore,init
 init(autoreset=True)
 
 class BookNotAvailableError(Exception):
@@ -7,6 +6,7 @@ class BookNotAvailableError(Exception):
 
 
 class Member:
+    
     def __init__(self, name: str, member_id: int):
         self.name = name
         self.member_id = member_id
@@ -26,4 +26,5 @@ class Member:
         else:
             raise BookNotAvailableError("This member did not borrow this book")      
 
-      
+    
+        
