@@ -3,19 +3,23 @@ import random
 from Member import Member
 from Book import Book
 from colorama import Fore, init
-
 init(autoreset=True)
+
+COLLECTION_FILE = "collection.json"
 
 class Library:
 
     def __init__(self):
         self.books = []
+        self.load_books()
+    
+    
+    def load_books(self):    
+        with open(COLLECTION_FILE, "r") as file:
+            data = json.load(file)
 
-        with open("collection.json", "r") as file:
-            collection = json.load(file)
-
-            for book_dict in collection:
-                book_obj = Book(
+            for book_dict in data:
+                book = Book(
                     book_check="json",
                     book_id=0,
                     title=book_dict["title"],
@@ -25,7 +29,21 @@ class Library:
                     available_copies=book_dict["total_copies"],
                     total_copies=book_dict["total_copies"]
                 )
-                self.books.append(book_obj)
+                self.books.append(book)
+
+    def save_book(self):
+        data = []
+        for book in self.books:
+            data.append({
+                "title": book.title,
+                "author": book.author,
+                "pages": book.pages,
+                "total_copies": book.total_copies,
+                "available_copies": book.available_copies
+            })
+        
+        with open(COLLECTION_FILE,"w") as file:
+            json.dump(data, file, indent=4)
 
     def author_search(self, search_text, member):
         search_text_lower = search_text.lower()

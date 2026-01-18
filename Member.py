@@ -1,3 +1,4 @@
+import json
 from colorama import Fore, init
 init(autoreset=True)
 
@@ -12,13 +13,9 @@ class Member:
         self.borrowed_books = []
 
     def borrow_book(self, book):
-        if book.available_copies > 0:
-            book.available_copies -= 1
             self.borrowed_books.append(book)
             print(Fore.GREEN + f"You borrowed '{book.title}' by {book.author}")
-        else:
-            raise BookNotAvailableError("This book is not available")
-
+        
     def return_book(self, book):
         if book in self.borrowed_books:
             book.available_copies += 1
