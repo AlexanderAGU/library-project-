@@ -76,7 +76,13 @@ class Library:
 
 
     def recommendations(self):
-        for book in self.books:
-            recommendations = random.randint(book)
-            print(f"{recommendations}")
+        if not self.books:
+            print(Fore.RED + "No books available for recommendations.")
+            return
 
+        count = min(3, len(self.books))
+        recommended_books = random.sample(self.books, count)
+
+        print(Fore.CYAN + "📚 Recommended Books:")
+        for book in recommended_books:
+            print(Fore.YELLOW + book.info_display())

@@ -38,6 +38,7 @@ if check == "y":
         exit()
 
     print(Fore.GREEN + "✅ Login successful!")
+    member = Member(name=login, member_id=users.index(user))
 
 elif check == "n":
     new_login = input("Please type a new email: ").lower()
@@ -60,7 +61,7 @@ elif check == "n":
 
 else:
     print("invalid")
-
+    exit()
 
 print("How can I help you today?")
 
@@ -69,11 +70,13 @@ while True:
     print("1. Search by author")
     print("2. Search by title")
     print("3. See recommendations")
-    print("4. Exit")
+    print("4. Check Borrowed list")
+    print("5. Exit")
+    
     try:
-        choice = int(input("Please type 1-4: "))
+        choice = int(input("Please type 1-5: "))
     except ValueError:
-        print(Fore.RED + "Invalid choice. Please Select 1-4")
+        print(Fore.RED + "Invalid choice. Please Select 1-5")
     
     if choice == 1:
         user_input = str(input("Type the author's name: "))
@@ -84,10 +87,11 @@ while True:
     elif choice == 3:
         library.recommendations() 
     elif choice == 4:
-        print("Exiting...")
-        break
+        member.check_book()
+    elif choice == 5:
+        exit()
     else:
-        print(Fore.RED + "Invalid choice. Please select between 1-4")
+        print(Fore.RED + "Invalid choice. Please select between 1-5")
         
         
 

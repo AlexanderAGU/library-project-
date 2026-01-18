@@ -1,9 +1,8 @@
-from colorama import Fore,init
+from colorama import Fore, init
 init(autoreset=True)
 
 class BookNotAvailableError(Exception):
     pass
-
 
 class Member:
     
@@ -16,6 +15,7 @@ class Member:
         if book.available_copies > 0:
             book.available_copies -= 1
             self.borrowed_books.append(book)
+            print(Fore.GREEN + f"You borrowed '{book.title}' by {book.author}")
         else:
             raise BookNotAvailableError("This book is not available")
 
@@ -23,8 +23,18 @@ class Member:
         if book in self.borrowed_books:
             book.available_copies += 1
             self.borrowed_books.remove(book)
+            print(Fore.GREEN + f"You returned '{book.title}' by {book.author}")
         else:
             raise BookNotAvailableError("This member did not borrow this book")      
 
-    
+    def check_book(self):
+        if not self.borrowed_books:
+            print(Fore.YELLOW + "You have no books in your list.")
+            return
 
+        print(Fore.CYAN + "Your borrowed books:")
+        for book in self.borrowed_books:
+            print(f"- {book.title} by {book.author}")
+
+
+print("Member.py LOADED") 
