@@ -27,13 +27,9 @@ class Library:
                 )
                 self.books.append(book_obj)
 
-    def author_search(self, search_text):
+    def author_search(self, search_text, member):
         search_text_lower = search_text.lower()
-        matches = []
-
-        for book in self.books:
-            if search_text_lower in book.author.lower():
-                matches.append(book)
+        matches = [book for book in self.books if search_text_lower in book.title.lower()]
 
         if not matches:
             print(Fore.RED + "No book was found.")
@@ -46,17 +42,14 @@ class Library:
             response = input("(y/n): ").strip().lower()
             if response == "y":
                 print(Fore.GREEN + "Book selected.")
+                self._ask_to_borrow(book, member)
                 return
-
+            
         print(Fore.RED + "No matching book confirmed. Please try again.")
 
-    def title_search(self, search_text):
+    def title_search(self, search_text, member):
         search_text_lower = search_text.lower()
-        matches = []
-
-        for book in self.books:
-            if search_text_lower in book.title.lower():
-                matches.append(book)
+        matches = [book for book in self.books if search_text_lower in book.title.lower()]
 
         if not matches:
             print(Fore.RED + "Book was not found.")
@@ -69,12 +62,20 @@ class Library:
             response = input("(y/n): ").strip().lower()
             if response == "y":
                 print(Fore.GREEN + "Book selected.")
-                Member.book_list(matches) 
+                self._ask_to_borrow(book, member)
                 return
 
         print(Fore.RED + "No matching book confirmed. Please try again.")
 
-
+    def _ask_to_borrow(self, book, member):
+        borrow_response = input("Would you like to borrow this book? (y/n) ").strip().lower()
+        if borrow_response == "y":
+            try:
+                member.borrow_book(book)
+            except Exception as e:
+                print(Fore.RED + str(e))
+                return
+        
     def recommendations(self):
         if not self.books:
             print(Fore.RED + "No books available for recommendations.")

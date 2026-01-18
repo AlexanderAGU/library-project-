@@ -37,4 +37,3 @@ class Member:
             print(f"- {book.title} by {book.author}")
 
 
-print("Member.py LOADED") 

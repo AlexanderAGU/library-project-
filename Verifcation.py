@@ -14,5 +14,5 @@ class User:
         return User._hash_password(input_password) == stored_hash
 
     
-print("Verifcation.py LOADED")
+
 
