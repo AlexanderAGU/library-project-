@@ -1,5 +1,14 @@
 [
-
-
-    
+    {
+        "login": "alexander.aguirre@chsd117.org",
+        "password_hash": "c3a0d3dfa94d65bb03cbecf843c7fde038ecbf6cd466deb79fa31be28a0bb4e5"
+    },
+    {
+        "login": "andrei@gmail.com",
+        "password_hash": "69e38bbe13ec0345f70bc63b2071011d9653257f425d9e4804e1b1bc750d3d55"
+    },
+    {
+        "login": "ritaagu@yahoo.com",
+        "password_hash": "61c8ea21d9370a3a7c434e1473cb6b1aebf0695ca8f1ca9403038e1600468fb6"
+    }
 ]

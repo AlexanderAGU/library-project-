@@ -9,6 +9,7 @@ import json, os
 library = Library()
 FILE = "user.json"
 
+# Login/Password Secuitry UI/Logic
 if not os.path.exists(FILE):
     with open("user.json","w") as file:
         json.dump([],file,indent=4)
@@ -16,11 +17,11 @@ if not os.path.exists(FILE):
 with open(FILE, "r") as file:
     try:
         users = json.load(file)
-    except json.JSONDecodeError:
+    except:
         users = []
 
 print("--- Welcome To Aguirre's library ---")
-check = input("Do you have an account? (y/n): ").strip().lower()
+check = input("Do you have a registered account to Aguirre's library? (y/n): ").strip().lower()
 
 if check == "y":
     login = input("What is your email? ").lower()
@@ -32,17 +33,20 @@ if check == "y":
         print(Fore.RED + "❌ Account not found.")
         exit()
 
-    if user["password_hash"] != password:
+    if not User.verify_password(password, user["password_hash"]):
         print(Fore.RED + "❌ Incorrect password.")
         exit()
 
     print(Fore.GREEN + "✅ Login successful!")
 
 elif check == "n":
-    login = input("Please type a new email: ").lower()
-    password = input("Please type a new password: ")
-
-    new_user = User(login, password)
+    new_login = input("Please type a new email: ").lower()
+    if any(u["login"] == new_login for u in users):
+        print(Fore.RED + "❌ This email is already registered. Please log in instead.")
+        exit()
+    new_password = input("Please type a new password: ")
+    
+    new_user = User(new_login, new_password)
 
     users.append({
         "login": new_user.login,
