@@ -86,7 +86,11 @@ class Library:
         print(Fore.RED + "No matching book confirmed. Please try again.")
 
     def _ask_to_borrow(self, book, member):
-        borrow_response = input("Would you like to borrow this book? (y/n) ").strip().lower()
+        try:
+            borrow_response = input("Would you like to borrow this book? (y/n) ").strip().lower()
+        except ValueError:
+            print(Fore.RED + "Invalid response")
+        
         if borrow_response == "y":
             try:
                 member.borrow_book(book)

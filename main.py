@@ -21,47 +21,52 @@ with open(FILE, "r") as file:
         users = []
 
 print("--- Welcome To Aguirre's library ---")
-check = input("Do you have a registered account to Aguirre's library? (y/n): ").strip().lower()
+while True:
+    check = input(
+        "Do you have a registered account to Aguirre's library? (y/n): ").strip().lower()
 
-if check == "y":
-    login = input("What is your email? ").lower()
-    password = input("What is your password? ")
+    if check == "y":
+        login = input("What is your email? ").lower()
+        password = input("What is your password? ")
 
-    user = next((u for u in users if u["login"] == login), None)
+        user = next((u for u in users if u["login"] == login), None)
 
-    if user is None:
-        print(Fore.RED + "❌ Account not found.")
-        exit()
+        if user is None:
+            print(Fore.RED + "❌ Account not found.")
+            continue
 
-    if not User.verify_password(password, user["password_hash"]):
-        print(Fore.RED + "❌ Incorrect password.")
-        exit()
+        if not User.verify_password(password, user["password_hash"]):
+            print(Fore.RED + "❌ Incorrect password.")
+            continue
 
-    print(Fore.GREEN + "✅ Login successful!")
-    member = Member(name=login, member_id=users.index(user))
+        print(Fore.GREEN + "✅ Login successful!")
+        member = Member(name=login, member_id=users.index(user))
+        break
 
-elif check == "n":
-    new_login = input("Please type a new email: ").lower()
-    if any(u["login"] == new_login for u in users):
-        print(Fore.RED + "❌ This email is already registered. Please log in instead.")
-        exit()
-    new_password = input("Please type a new password: ")
-    
-    new_user = User(new_login, new_password)
+    elif check == "n":
+        new_login = input("Please type a new email: ").lower()
 
-    users.append({
-        "login": new_user.login,
-        "password_hash": new_user.password_hash
-    })
+        if any(u["login"] == new_login for u in users):
+            print(Fore.RED + "❌ This email is already registered. Please log in instead.")
+            continue
 
-    with open(FILE, "w") as file:
-        json.dump(users, file, indent=4)
+        new_password = input("Please type a new password: ")
+        new_user = User(new_login, new_password)
 
-    print(Fore.GREEN + "✅ Account created successfully!")
+        users.append({
+            "login": new_user.login,
+            "password_hash": new_user.password_hash
+        })
 
-else:
-    print("invalid")
-    exit()
+        with open(FILE, "w") as file:
+            json.dump(users, file, indent=4)
+
+        print(Fore.GREEN + "✅ Account created successfully!")
+        member = Member(name=new_login, member_id=len(users) - 1)
+        break
+
+    else:
+        print(Fore.RED + "❌ Invalid option. Please enter y or n.")
 
 print("How can I help you today?")
 
