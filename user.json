@@ -10,5 +10,13 @@
     {
         "login": "admin123",
         "password_hash": "ef92b778bafe771e89245b89ecbc08a44a4e166c06659911881f383d4473e94f"
+    },
+    {
+        "login": "jaey.cyber@gmail.com",
+        "password_hash": "fc1312fa98fa6728871001f1ec7a6c9785fa8ed794f847119437ec97b7c93a7d"
+    },
+    {
+        "login": "jaey",
+        "password_hash": "6b86b273ff34fce19d6b804eff5a3f5747ada4eaa22f1d49c01e52ddb7875b4b"
     }
 ]

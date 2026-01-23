@@ -19,7 +19,7 @@ with open(FILE, "r") as file:
         users = json.load(file)
     except:
         users = []
-os.system("cls")
+
 print("--- Welcome To Aguirre's library ---")
 check = input("Do you have a registered account to Aguirre's library? (y/n): ").strip().lower()
 
@@ -58,7 +58,6 @@ elif check == "n":
         json.dump(users, file, indent=4)
 
     print(Fore.GREEN + "✅ Account created successfully!")
-    member = Member(name=new_login, member_id=len(users)-1)
 
 else:
     print("invalid")
@@ -90,7 +89,6 @@ while True:
     elif choice == 4:
         member.check_book()
     elif choice == 5:
-        print("Exiting...")
         exit()
     else:
         print(Fore.RED + "Invalid choice. Please select between 1-5")
